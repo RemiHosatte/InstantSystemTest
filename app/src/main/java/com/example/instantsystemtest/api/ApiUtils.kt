@@ -9,10 +9,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-class ApiUtils {
+object ApiUtils {
 
-    val url = "https://newsapi.org/v2/"
-    val apiKey = ""
+    private val url = "https://newsapi.org/v2/"
+    private val apiKey = ""
 
     fun retrofitBuilder(): ApiInterface {
         return Retrofit.Builder()

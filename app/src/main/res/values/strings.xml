@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InstantSystemTest</string>
+    <string name="cannot_get_data">Unable to retrieve data (Error: %s)</string>
 </resources>
