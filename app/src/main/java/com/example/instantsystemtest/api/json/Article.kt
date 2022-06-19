@@ -2,7 +2,7 @@ package com.example.instantsystemtest.api.json
 
 import com.google.gson.annotations.SerializedName
 
-data class Articles (
+data class Article (
 
 	@SerializedName("source") val source : Source,
 	@SerializedName("author") val author : String,

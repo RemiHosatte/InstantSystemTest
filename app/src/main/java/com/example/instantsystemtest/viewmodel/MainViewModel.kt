@@ -1,10 +1,9 @@
 package com.example.instantsystemtest.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.instantsystemtest.api.json.Articles
+import com.example.instantsystemtest.api.json.Article
 import com.example.instantsystemtest.api.json.NewsResponse
 import com.example.instantsystemtest.model.Repository
 import kotlinx.coroutines.*
@@ -15,7 +14,7 @@ import retrofit2.Response
 public class MainViewModel(private val repository: Repository) : ViewModel() {
     private val TAG = "MainViewModel"
 
-    val articlesList = MutableLiveData<List<Articles>>()
+    val articlesList = MutableLiveData<List<Article>>()
     val errorStr = MutableLiveData<String>()
 
     val handler = CoroutineExceptionHandler { _, exception ->
@@ -43,4 +42,6 @@ public class MainViewModel(private val repository: Repository) : ViewModel() {
 
         }
     }
+
+
 }
