@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">InstantSystemTest</string>
     <string name="cannot_get_data">Unable to retrieve data (Error: %s)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

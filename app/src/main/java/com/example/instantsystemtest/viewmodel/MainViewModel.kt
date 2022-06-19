@@ -43,5 +43,9 @@ public class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    fun onArticleSelected(item: Article) {
+
+    }
+
 
 }
