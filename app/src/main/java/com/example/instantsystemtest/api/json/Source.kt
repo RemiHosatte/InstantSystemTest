@@ -1,6 +1,8 @@
 package com.example.instantsystemtest.api.json
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 /*
 Copyright (c) 2022 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -13,9 +15,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Source (
 
-	@SerializedName("id") val id : String,
-	@SerializedName("name") val name : String
-)
+	@SerializedName("id") val id : String?,
+	@SerializedName("name") val name : String?
+) :Parcelable

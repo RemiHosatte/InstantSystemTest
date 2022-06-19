@@ -1,5 +1,7 @@
-package com.example.instantsystemtest.viewmodel
+package com.example.instantsystemtest.ui.main.viewmodel
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 public class MainViewModel(private val repository: Repository) : ViewModel() {
     private val TAG = "MainViewModel"
@@ -43,9 +46,6 @@ public class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun onArticleSelected(item: Article) {
-
-    }
 
 
 }

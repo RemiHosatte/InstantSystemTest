@@ -1,19 +1,21 @@
-package com.example.instantsystemtest.view
+package com.example.instantsystemtest.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.instantsystemtest.R
 import com.example.instantsystemtest.api.json.Article
 import com.example.instantsystemtest.databinding.ActivityMainBinding
 import com.example.instantsystemtest.model.Repository
-import com.example.instantsystemtest.viewmodel.MainViewModel
-import com.example.instantsystemtest.viewmodel.ViewModelFactory
+import com.example.instantsystemtest.ui.details.DetailsActivity
+import com.example.instantsystemtest.ui.main.viewmodel.MainViewModel
+import com.example.instantsystemtest.ui.main.viewmodel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity(), ArticleRecyclerView.OnItemClickListener {
     private val TAG = "MainActivity"
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity(), ArticleRecyclerView.OnItemClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        viewModel = ViewModelProvider(this, ViewModelFactory(Repository())).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, MainViewModelFactory(Repository())).get(MainViewModel::class.java)
 
         viewModel.articlesList.observe(this, {
             Log.i(TAG, "List show")
@@ -30,16 +32,27 @@ class MainActivity : AppCompatActivity(), ArticleRecyclerView.OnItemClickListene
             val adapter = ArticleRecyclerView(it, this)
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
+            if (binding.swiperefresh.isRefreshing){
+                binding.swiperefresh.isRefreshing = false;
+            }
         })
 
         viewModel.errorStr.observe(this, {
             Log.e(TAG, getString(R.string.cannot_get_data, it))
         })
         viewModel.getListArticles()
+
+        binding.swiperefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
+            override fun onRefresh() {
+                viewModel.getListArticles()
+            }
+        })
     }
 
     override fun onItemClick(item: Article) {
-        viewModel.onArticleSelected(item)
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("article", item)
+        startActivity(intent)
     }
 
 }

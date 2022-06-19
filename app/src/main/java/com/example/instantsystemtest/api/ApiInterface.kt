@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface ApiInterface {
         @GET("top-headlines")
-        fun getTopHeadLines(@Query("language") language : String) : Call<NewsResponse>;
+        fun getTopHeadLines(@Query("language") language : String, @Query("pageSize") pageSize : Int) : Call<NewsResponse>;
         
 
 }

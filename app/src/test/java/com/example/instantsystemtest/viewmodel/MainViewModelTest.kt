@@ -7,6 +7,7 @@ import com.example.instantsystemtest.ApiTest
 import com.example.instantsystemtest.TestCoroutineRule
 import com.example.instantsystemtest.api.json.Article
 import com.example.instantsystemtest.model.Repository
+import com.example.instantsystemtest.ui.main.viewmodel.MainViewModel
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi

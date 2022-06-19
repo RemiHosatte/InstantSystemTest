@@ -1,10 +1,10 @@
-package com.example.instantsystemtest.viewmodel
+package com.example.instantsystemtest.ui.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.instantsystemtest.model.Repository
 
-class ViewModelFactory constructor(private val repository: Repository) :
+class MainViewModelFactory constructor(private val repository: Repository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

@@ -4,6 +4,6 @@ import com.example.instantsystemtest.api.ApiUtils
 
 open class Repository {
 
-   fun getFrenchArticles() = ApiUtils.retrofitBuilder().getTopHeadLines("fr")
+   fun getFrenchArticles() = ApiUtils.retrofitBuilder().getTopHeadLines("fr", 100)
 
 }

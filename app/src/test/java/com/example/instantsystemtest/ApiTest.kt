@@ -22,7 +22,7 @@ class ApiTest : TestCase() {
     fun testOKGetTopHeadLines(): Response<NewsResponse> {
         //Get an instance of Retrofit
         val apiInterface : ApiInterface = ApiUtils.retrofitBuilder()
-        val response = apiInterface.getTopHeadLines("fr").execute()
+        val response = apiInterface.getTopHeadLines("fr",100).execute()
 
         //Check for error body
         val errorBody = response.errorBody()
@@ -38,7 +38,7 @@ class ApiTest : TestCase() {
     fun testNOKGetTopHeadLines(): Response<NewsResponse> {
         //Get an instance of Retrofit
         val apiInterface : ApiInterface = ApiUtils.retrofitBuilder()
-        val response = apiInterface.getTopHeadLines("").execute()
+        val response = apiInterface.getTopHeadLines("",500).execute()
 
         //Check for error body
         val errorBody = response.errorBody()
