@@ -3,7 +3,7 @@ package com.example.instantsystemtest.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.example.instantsystemtest.ApiTest
+import com.example.instantsystemtest.ApiTestUtils
 import com.example.instantsystemtest.TestCoroutineRule
 import com.example.instantsystemtest.api.json.Article
 import com.example.instantsystemtest.model.Repository
@@ -53,8 +53,8 @@ class MainViewModelTest {
         testCoroutineRule.runBlockingTest {
             viewModel.articlesList.observeForever(articlesResponseObserver)
             viewModel.errorStr.observeForever(errorResponseObserver)
-            val apiTest = ApiTest()
-            val response = apiTest.testOKGetTopHeadLines()
+            val apiTestUtils = ApiTestUtils()
+            val response = apiTestUtils.testOKGetTopHeadLines()
             viewModel.getListArticles();
             assertNotNull(viewModel.articlesList.getOrAwaitValue())
             assertEquals(response.body()?.articles, viewModel.articlesList.getOrAwaitValue())

@@ -16,9 +16,26 @@ import org.mockito.MockitoAnnotations
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class ApiTest : TestCase() {
+class ApiTestUtils  {
+    @Mock
+    private lateinit var apiUtils : ApiUtils
 
-    @Test
+
+
+    fun testNOKGetTopHeadLines(): Response<NewsResponse> {
+        val apiInterface : ApiInterface = apiUtils.retrofitBuilder()
+        val response = apiInterface.getTopHeadLines("",0).execute()
+
+        //Check for error body
+        val errorBody = response.errorBody()
+        assert(errorBody != null)
+        //Check for success body
+        val responseWrapper = response.body()
+        assert(responseWrapper == null)
+        assert(response.code() != 200)
+        return response
+    }
+
     fun testOKGetTopHeadLines(): Response<NewsResponse> {
         //Get an instance of Retrofit
         val apiInterface : ApiInterface = ApiUtils.retrofitBuilder()
@@ -31,22 +48,6 @@ class ApiTest : TestCase() {
         val responseWrapper = response.body()
         assert(responseWrapper != null)
         assert(response.code() == 200)
-        return response
-    }
-
-    @Test
-    fun testNOKGetTopHeadLines(): Response<NewsResponse> {
-        //Get an instance of Retrofit
-        val apiInterface : ApiInterface = ApiUtils.retrofitBuilder()
-        val response = apiInterface.getTopHeadLines("",500).execute()
-
-        //Check for error body
-        val errorBody = response.errorBody()
-        assert(errorBody != null)
-        //Check for success body
-        val responseWrapper = response.body()
-        assert(responseWrapper == null)
-        assert(response.code() == 400)
         return response
     }
 

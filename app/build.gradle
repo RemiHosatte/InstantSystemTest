@@ -44,19 +44,6 @@ kapt {
     correctErrorTypes = true
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir "${buildDir}/generated/source/kapt/main"
-        }
-    }
-    test {
-        java {
-            srcDir 'src/test/java'
-        }
-    }
-}
-
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
