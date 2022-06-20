@@ -3,6 +3,7 @@ package com.example.instantsystemtest.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), ArticleRecyclerView.OnItemClickListene
 
         viewModel.errorStr.observe(this, {
             Log.e(TAG, getString(R.string.cannot_get_data, it))
+            Toast.makeText(this, getString(R.string.cannot_get_data, it), Toast.LENGTH_SHORT).show()
         })
         viewModel.getListArticles()
 
